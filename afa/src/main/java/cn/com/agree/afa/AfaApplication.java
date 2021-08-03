@@ -11,9 +11,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * @author mx
  */
 @EnableFeignClients
-@SpringBootApplication(exclude = {
-        DataSourceAutoConfiguration.class
-})
+@SpringBootApplication()
 public class AfaApplication {
 
     public static void main(String[] args) {

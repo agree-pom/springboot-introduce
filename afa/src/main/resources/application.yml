@@ -3,6 +3,11 @@ server:
   servlet:
     context-path: /springboot-introduce
 
+remote:
+  url:
+    prefix: http://localhost:8225/mock-server
+    find: /find-one
+    save: /save
 spring:
   datasource:
     driver-class-name: oracle.jdbc.OracleDriver

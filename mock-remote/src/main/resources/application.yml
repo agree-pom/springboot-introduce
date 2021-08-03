@@ -1,0 +1,4 @@
+server:
+  port: 8225
+  servlet:
+    context-path: /mock-remote

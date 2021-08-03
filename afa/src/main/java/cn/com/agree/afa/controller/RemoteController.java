@@ -16,6 +16,7 @@ import java.util.Map;
 
 /**
  * 调用第三方
+ * 目前多使用RestTemplate和Feign
  *
  * @author mx
  * @date 2021/8/3 11:01
@@ -84,8 +85,8 @@ public class RemoteController {
         String url = prefixUrl + saveUrl;
         log.info("远程 url -> {}, data -> {}", url, map);
 
-//        ResponseEntity<String> responseEntity = restTemplate.postForEntity(url, map, String.class);
-//        log.info("save 结果 -> {}", responseEntity.getBody());
+        ResponseEntity<String> responseEntity = restTemplate.postForEntity(url, map, String.class);
+        log.info("save 结果 -> {}", responseEntity.getBody());
 
 
         log.info("\n\n\n");

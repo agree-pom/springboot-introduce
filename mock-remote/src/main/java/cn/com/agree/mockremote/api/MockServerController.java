@@ -20,20 +20,12 @@ public class MockServerController {
         return "服务端已收到请求数据 name -> " + name;
     }
 
-    @RequestMapping(method = {RequestMethod.POST, RequestMethod.PUT}, name = "/save")
+    @RequestMapping(method = {RequestMethod.POST, RequestMethod.PUT}, value = "/save")
     public String save(@RequestBody User user) {
         log.info("保存用户 user -> {}", user);
 
 
-        return "服务端收到保存的用户，数据 -> {}" + user.toString();
-    }
-
-    @RequestMapping(method = RequestMethod.POST, name = "/test")
-    public String test() {
-        log.info("测试post");
-
-
-        return "服务端收到保存的用户，数据 -> " + "测试成功" ;
+        return "服务端收到保存的用户，数据 -> " + user.toString();
     }
 
 }

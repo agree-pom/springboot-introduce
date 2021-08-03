@@ -39,7 +39,4 @@ public interface RemoteClient {
     @PostMapping("/save")
     String saveInvoke(@RequestBody Map<String, Object> map);
 
-    @PostMapping("/test")
-    String testInvoke();
-
 }

@@ -5,7 +5,7 @@ server:
 
 remote:
   url:
-    prefix: http://localhost:8225/mock-server
+    prefix: http://localhost:8225/mock-remote
     find: /find-one
     save: /save
 spring:

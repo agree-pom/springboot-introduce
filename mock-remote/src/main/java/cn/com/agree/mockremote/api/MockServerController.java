@@ -28,4 +28,12 @@ public class MockServerController {
         return "服务端收到保存的用户，数据 -> {}" + user.toString();
     }
 
+    @RequestMapping(method = RequestMethod.POST, name = "/test")
+    public String test() {
+        log.info("测试post");
+
+
+        return "服务端收到保存的用户，数据 -> " + "测试成功" ;
+    }
+
 }

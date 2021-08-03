@@ -3,3 +3,28 @@ server:
   servlet:
     context-path: /springboot-introduce
 
+spring:
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@//192.9.200.74:1521/orcl
+    username: gs
+    password: gs
+    hikari:
+      #尽量不设置最小size，使其和max保持一致
+      #      minimum-idle: 5
+      maximum-pool-size: 10
+      auto-commit: true
+      idle-timeout: 30000
+      pool-name: HikariCP
+      connection-timeout: 30000
+jpa:
+  show-sql: true
+  database: oracle
+  open-in-view: true
+  hibernate:
+    ddl-auto: none
+    properties:
+      hibernate:
+        enable_lazy_load_no_trans: true
+        dialect: org.hibernate.dialect.Oracle12cDialect
+        current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext

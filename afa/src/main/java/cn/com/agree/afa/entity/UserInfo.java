@@ -1,6 +1,7 @@
 package cn.com.agree.afa.entity;
 
 import cn.com.agree.afa.common.enums.UserStatus;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -19,6 +20,7 @@ import java.io.Serializable;
 @Accessors(chain = true)
 @Entity
 @Table(name = "user_info")
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
 public class UserInfo implements Serializable {
     @Id
     @Basic

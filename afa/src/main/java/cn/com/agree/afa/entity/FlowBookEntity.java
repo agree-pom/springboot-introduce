@@ -8,7 +8,7 @@ import java.io.Serializable;
 @Data
 @IdClass(FlowBookPk.class)
 @Entity
-@Table(name = "flow_book")
+@Table(name = "FLOW_BOOK")
 public class FlowBookEntity implements Serializable {
     @Id
     @Column(name = "WORKDATE")

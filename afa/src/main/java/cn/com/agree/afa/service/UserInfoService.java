@@ -1,6 +1,7 @@
 package cn.com.agree.afa.service;
 
 import cn.com.agree.afa.common.constant.UserResultConstant;
+import cn.com.agree.afa.common.enums.UserStatus;
 import cn.com.agree.afa.common.exception.UserSecurityException;
 import cn.com.agree.afa.entity.UserInfo;
 import cn.com.agree.afa.repository.UserInfoRepository;
@@ -80,7 +81,7 @@ public class UserInfoService {
                 // 根据查询条件动态判断
                 if (StringUtils.hasText(parameters.getUserName())) {
                     predicateList.add(
-                            criteriaBuilder.like(root.get("userName").as(String.class), parameters.getUserName())
+                            criteriaBuilder.like(root.get("userName").as(String.class), "%" + parameters.getUserName() + "%")
                     );
                 }
                 // 查询条件，自行扩展（例如date类型 le，ge，between）
@@ -95,11 +96,29 @@ public class UserInfoService {
         }, page);
 
 
-        return null;
+        return specificationPage;
     }
 
     public UserInfo findOneById(Long id) {
         return userInfoRepository.getOne(id);
+    }
+
+    /**
+     * 保存用户
+     * @param userInfo
+     * @return
+     */
+    public UserInfo save(UserInfo userInfo) {
+        // 使用原生sql查询最大id
+        Long id = userInfoRepository.findMaxId();
+        userInfo.setUserId(id)
+                .setPassword("123456")
+                .setUserStatus(UserStatus.NORMAL);
+        return userInfoRepository.save(userInfo);
+    }
+
+    public UserInfo findOneByUserCode(String userCode) {
+        return userInfoRepository.findOneByUserCode(userCode).orElse(null);
     }
 
     /**

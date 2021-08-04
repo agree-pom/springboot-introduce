@@ -40,7 +40,7 @@ public interface UserInfoRepository extends JpaRepository<UserInfo, Long>, JpaSp
      * 使用原生sql执行查询
      * @return
      */
-    @Query(value = "select max(nvl(user_id, 0)) + 1 from user_info ", nativeQuery = true)
+    @Query(value = "select nvl(max(user_id), 0) + 1 from user_info ", nativeQuery = true)
     Long findMaxId();
 
     /**

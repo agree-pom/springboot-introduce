@@ -1,19 +1,17 @@
---declare
---    i integer ;
---begin
---    select count(1) into i from user_tables where table_name = 'user_info';
---if i > 0 then
---    dbms_output.put_line('表user_info已存在 ...');
---end if;
---    dbms_output.put_line('表user_info不存在，执行创建 ...');
---    execute immediate '';
---end;
---
---
---
---
-----create table user_infoa
+create table user_info (
+   user_id number(19,0) not null,
+   login_cnt number(10,0) default 0,
+   password varchar2(255 char) not null,
+   user_code varchar2(255 char) not null unique ,
+   user_name varchar2(255 char) not null unique ,
+   user_status varchar2(255 char), primary key (user_id)
+);
 
-
-
-select * from user_info;
+create table flow_book  (
+    workdate varchar2(256) not null ,
+    agentserialno varchar2(256) not null ,
+    dealcode varchar2(256),
+    dealmsg varchar2(256),
+    remark varchar2(256),
+    constraint pk_flow_book primary key(workdate, agentserialno)
+);

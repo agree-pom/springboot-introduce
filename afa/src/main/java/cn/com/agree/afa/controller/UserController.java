@@ -4,10 +4,11 @@ import cn.com.agree.afa.entity.UserInfo;
 import cn.com.agree.afa.service.UserInfoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * 用户相关处理类
@@ -34,7 +35,44 @@ public class UserController {
         return userInfoService.findOneById(userId);
     }
 
+    @PostMapping("save")
+    public UserInfo save(@RequestBody UserInfo userInfo) {
+        log.info("保存用户 -> {}", userInfo);
+
+        return userInfoService.save(userInfo);
+    }
+
+    /**
+     * 可以使用get/post/put方法，且@RequestParam中name可指定（如果不指定则认为是和变量名一致）
+     * @param name
+     * @return
+     */
+    @RequestMapping("/find-by-code")
+    public UserInfo findUserByUserCode(@RequestParam(name = "userName") String name) {
+        return userInfoService.findOneByUserCode(name);
+    }
+
+    @GetMapping("find-all")
+    public List<UserInfo> findAll() {
+        return userInfoService.findAllUsers();
+    }
+
+    /**
+     * 参数不写注解直接引用，默认是在@RequestParam
+     * @param userInfo
+     * @param size
+     * @param page
+     * @return
+     */
+    @GetMapping("query-page")
+    public Page<UserInfo> queryPage(UserInfo userInfo, int size, int page) {
+        log.info("" + userInfo);
+        // 如果有复杂的比如上送sort条件，需要正常接收
+        PageRequest pageRequest = PageRequest.of(page, size);
 
 
+
+        return userInfoService.queryPage(pageRequest, userInfo);
+    }
 
 }

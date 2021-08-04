@@ -22,14 +22,15 @@ spring:
       idle-timeout: 30000
       pool-name: HikariCP
       connection-timeout: 30000
-jpa:
-  show-sql: true
-  database: oracle
-  open-in-view: true
-  hibernate:
-    ddl-auto: none
-    properties:
-      hibernate:
-        enable_lazy_load_no_trans: true
-        dialect: org.hibernate.dialect.Oracle12cDialect
-        current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext
+
+#  jpa:
+#    show-sql: true
+#    database: oracle
+#    open-in-view: true
+#    hibernate:
+#      ddl-auto: c
+#      properties:
+#        hibernate:
+#          enable_lazy_load_no_trans: true
+#          dialect: org.hibernate.dialect.Oracle12cDialect
+#          current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext

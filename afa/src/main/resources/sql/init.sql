@@ -1,0 +1,1 @@
+insert into test5(name, password) values ('7', '7')||

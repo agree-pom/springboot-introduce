@@ -24,7 +24,8 @@ spring:
       connection-timeout: 30000
     data: classpath:sql/init.sql
     schema: classpath:sql/create.sql
-    initialization-mode: never
+    initialization-mode: always
+    separator: '||'
   jpa:
     show-sql: true
     database: oracle

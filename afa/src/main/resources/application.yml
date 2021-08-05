@@ -22,7 +22,7 @@ spring:
       idle-timeout: 30000
       pool-name: HikariCP
       connection-timeout: 30000
-    data: classpath:sql/init.sql
+#    data: classpath:sql/init.sql
     schema: classpath:sql/create.sql
     initialization-mode: always
     separator: '||'
